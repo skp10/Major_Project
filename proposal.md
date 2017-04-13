@@ -8,7 +8,7 @@ For my major project, I am planning to make a MARIO GAME. The reason why I chose
 
 
 ## Must Haves's List...
-[] character
+- [ ] character
 
 
 ## Nice to Have's List...
