@@ -7,7 +7,7 @@ For my major project, I am planning to make a MARIO GAME. The reason why I chose
 ***I WILL BE DOING MY MAJOR PROJECT ON PROCESSING.*** The way I will start is by adding basic physics motion such as gravity and movements. I would create different classes of all the properties that I need for creating this game and get this game working with simple primitive shapes such as squares, rectangles, ellipse etc... I would add graphics and beauty to my game at the end. I would look some YouTube videos and tutorials to help create this game.
 
 ## TimeLine...
-- start time - 14 April 2017 (Use my easter break to work on it)
+- start time - 14 April 2017 (I will use my easter break to work on it)
 
 It would take about 2-3 weeks to get basic game going. (JUST BASIC GAME MOVEMENTS AND INTERACTION WITHOUT ANY LEVELS OR GRAPHICS)
 
