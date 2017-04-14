@@ -15,7 +15,7 @@ And I would spend the rest of my time working on adding graphics...
 
 - Finish Time of my Project ~ June 3rd - 4th 
 
-During my progress, I would take different Pictures/Screen shots and also videos to document to make my presentation.
+During my progress, I would take different Pictures/Screen shots and also videos to document and to make my presentation.
 I would try to be as clear, neat, and organized as possible.
 I would start my Presentation as soon as I finish my Project and also I would try to it create during my Project work.
 - Finish Time of my Presentation – June 8th
