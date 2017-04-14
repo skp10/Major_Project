@@ -12,7 +12,6 @@ For my major project, I am planning to make a MARIO GAME. The reason why I chose
 It would take about 2-3 weeks to get basic game going. (JUST BASIC GAME MOVEMENTS AND INTERACTION WITHOUT ANY LEVELS OR GRAPHICS)
 
 And I would spend the rest of my time working on adding graphics...
-
 - Finish Time of my Project ~ June 3rd - 4th 
 
 During my progress, I would take different Pictures/Screen shots and also videos to document and to make my presentation.
