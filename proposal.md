@@ -10,15 +10,29 @@ For my major project, I am planning to make a MARIO GAME. The reason why I chose
 - start time - 14 April 2017 (Use my easter break to work on it)
 
 It would take about 2-3 weeks to get basic game going. (JUST BASIC GAME MOVEMENTS AND INTERACTION WITHOUT ANY LEVELS OR GRAPHICS)
-Finish Time of my Project - June 3rd 
+
+- Finish Time of my Project ~ June 3rd - 4th 
+
 During my progress, I would take different Pictures/Screen shots and also videos to document and to make my presentation.
 I would try to be as clear, neat, and organized as possible.
 I would start my Presentation as soon as I finish my Project and also I would try to it create during my Project work.
-Finish Time of my Presentation – June 8th
+- Finish Time of my Presentation – June 8th
 
 
 ## Must Haves's List...
-- [ ] character
+- [ ] Character / MAIN CHARACTER
+- [ ] Enemy 
+- [ ] Collision Detection
+- [ ] Gravity
+- [ ] Motion / KEY MOVEMENT
+- [ ] Coins
 
+*** THERE MIGHT BE MORE. WHEN I WILL START MAKING THE GAME, I WILL COME UP WITH MORE IDEAS...***
 
 ## Nice to Have's List...
+- [ ] Sound Effects
+- [ ] Better Graphics
+- [ ] Random or More different levels
+- [ ] Difficulty level STATE... (OPTIONS: EASY, MEDIUM, HARD)
+
+*** THERE MIGHT BE MORE. WHEN I WILL START MAKING THE GAME, I WILL COME UP WITH MORE IDEAS...***
