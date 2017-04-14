@@ -27,7 +27,7 @@ I would start my Presentation as soon as I finish my Project and also I would tr
 - [ ] Motion / KEY MOVEMENT
 - [ ] Coins
 
-*** THERE MIGHT BE MORE. WHEN I WILL START MAKING THE GAME, I WILL COME UP WITH MORE IDEAS...***
+***THERE MIGHT BE MORE. WHEN I WILL START MAKING THE GAME, I WILL COME UP WITH MORE IDEAS...***
 
 ## Nice to Have's List...
 - [ ] Sound Effects
@@ -35,4 +35,4 @@ I would start my Presentation as soon as I finish my Project and also I would tr
 - [ ] Random or More different levels
 - [ ] Difficulty level STATE... (OPTIONS: EASY, MEDIUM, HARD)
 
-*** THERE MIGHT BE MORE. WHEN I WILL START MAKING THE GAME, I WILL COME UP WITH MORE IDEAS...***
+***THERE MIGHT BE MORE. WHEN I WILL START MAKING THE GAME, I WILL COME UP WITH MORE IDEAS...***
