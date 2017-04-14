@@ -8,6 +8,8 @@ For my major project, I am planning to make a MARIO GAME. The reason why I chose
 
 ## TimeLine...
 - start time - 14 April 2017 (Use my easter break to work on it)
+
+It would take about 2-3 weeks to get basic game going. (JUST BASIC GAME MOVEMENTS AND INTERACTION WITHOUT ANY LEVELS OR GRAPHICS)
 Finish Time of my Project - June 3rd 
 During my progress, I would take different Pictures/Screen shots and also videos to document and to make my presentation.
 I would try to be as clear, neat, and organized as possible.
