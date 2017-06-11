@@ -114,20 +114,12 @@ class Mario extends Characters {
     imageMode(CENTER);
     if (!movingRight && appearLeftOrRightSprite) {
       image(rightMario[0], location.x, location.y);
-    } else if (movingRight) {
-      if (rightMovementState == 0) {
-
-        image(rightMario[1], location.x, location.y);
-      } else if (rightMovementState == 1) {
-
-        image(rightMario[2], location.x, location.y);
-      } else if (rightMovementState == 2) {
-
-        image(rightMario[3], location.x, location.y);
-      } else if (rightMovementState == 3) {
-
-        image(rightMario[4], location.x, location.y);
-      }
+    } 
+    else if (movingRight) {     
+      if (rightMovementState == 0) image(rightMario[1], location.x, location.y);
+      else if (rightMovementState == 1) image(rightMario[2], location.x, location.y);
+      else if (rightMovementState == 2) image(rightMario[3], location.x, location.y);
+      else if (rightMovementState == 3) image(rightMario[4], location.x, location.y);
 
       if (frameCount % 5 == 0) {
         rightMovementState++;
@@ -142,21 +134,13 @@ class Mario extends Characters {
     imageMode(CENTER);
     if (!movingLeft && !appearLeftOrRightSprite) {
       image(leftMario[0], location.x, location.y);
-    } else if (movingLeft) {
-      if (leftMovementState == 0) {
-
-        image(leftMario[1], location.x, location.y);
-      } else if (leftMovementState == 1) {
-
-        image(leftMario[2], location.x, location.y);
-      } else if (leftMovementState == 2) {
-
-        image(leftMario[3], location.x, location.y);
-      } else if (leftMovementState == 3) {
-
-        image(leftMario[4], location.x, location.y);
-      }
-
+    } 
+    else if (movingLeft) {
+      if (leftMovementState == 0) image(leftMario[1], location.x, location.y);
+      else if (leftMovementState == 1) image(leftMario[2], location.x, location.y);
+      else if (leftMovementState == 2) image(leftMario[3], location.x, location.y);
+      else if (leftMovementState == 3) image(leftMario[4], location.x, location.y);
+      
       if (frameCount % 5 == 0) {
         leftMovementState++;
         if (leftMovementState == 4) {
@@ -168,12 +152,14 @@ class Mario extends Characters {
 
   void leftRightMovement() {
     if (appearLeftOrRightSprite) {
-      if (movingRight) {
+      if (movingRight) {        
         location.x += vel.x;
+        vel.x = 3;
       }
     } else {
       if (movingLeft) {
         location.x -= vel.x;
+        vel.x = 3;
       }
     }
   }

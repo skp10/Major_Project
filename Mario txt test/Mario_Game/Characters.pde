@@ -3,6 +3,8 @@ class Characters {
   PVector vel;
   PVector ac;
   
+  boolean isKoopa;
+  
   float mass;
 
   Characters(PVector location, PVector vel, PVector ac, float mass) {
@@ -15,8 +17,10 @@ class Characters {
 
   void move() {
     vel.add(ac);
-    ac.y = 0;
     location.y += vel.y;
+    if (isKoopa) {
+      location.x -= vel.x;
+    }
     ac.mult(0);
   }
 

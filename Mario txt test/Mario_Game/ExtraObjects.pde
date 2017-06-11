@@ -1,34 +1,38 @@
 class ExtraObjects {
-  PVector grav;
   
-  ArrayList<Koopa> theKoopa;
-  
-  PVector enemyVel;
-  PVector enemyAc;
-  
-  final float enemyMass = 0.3; 
-  PVector koopaDimension;
+  ArrayList<Koopa> koopas;
+  PVector grav;  
   
   ExtraObjects(PVector grav) {
     this.grav = grav;
     
-    theKoopa = new ArrayList<Koopa>();
-    enemyVel = new PVector(1, 0);
-    enemyAc = new PVector(0, 0);
-    
-    koopaDimension = new PVector();
-    
-    for (int i=0; i < 10; i++) {  //LOCATION-----------
-      theKoopa.add(new Koopa(new PVector(1500, 300), enemyVel, enemyAc, enemyMass));
-    }
+    koopas = new ArrayList<Koopa>();   
   }
   
   void display(Mario theMario) {
-    Koopa koop0 = theKoopa.get(0);
-    koop0.display(theMario);
-    koop0.marioAndKoopaCollision(theMario);
-    koop0.move();
-    koop0.location.x -= koop0.vel.x;
-    koop0.addforce(grav);
+    for (int i=0; i<koopas.size(); i++) {
+      Koopa theKoopa = koopas.get(i);
+      
+      if (theKoopa.displayKoopa) {
+        theKoopa.display(theMario);     
+        theKoopa.move();
+        theKoopa.addforce(grav);
+      }
+      theKoopa.marioAndKoopaCollision(theMario);
+    }
+    //for (int i=0; i< koopas.size(); i++) {
+    //  Koopa koopi = koopas.get(i);
+    //  for (int j=0; j <koopas.size() && j != i; j++) {
+    //    Koopa koopj = koopas.get(j);
+        
+    //    float distX = dist(koopi.location.x, koopi.location.y, koopj.location.x, koopi.location.y);
+    //    float distY = dist(koopi.location.x, koopi.location.y, koopi.location.x, koopj.location.y);
+        
+    //    if (distX <= koopi.dimension.x/2 && distY <= koopi.dimension.y/2) {
+    //      koopi.vel.x *= -1;
+    //      koopi.movingRight = !koopi.movingRight;
+    //    }
+    //  }
+    //}
   }
 }

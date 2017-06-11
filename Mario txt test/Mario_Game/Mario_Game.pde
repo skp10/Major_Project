@@ -26,7 +26,8 @@ void draw() {
       marioInteraction();
       //println(mario.location.x);
     popMatrix();
-  } else if (mario.location.x <= width/2) {
+  } 
+  else if (mario.location.x <= width/2) {
     imageMode(CORNER);
     image(world, int((-width/2)/4), 0);
     theLevel.display(mario);

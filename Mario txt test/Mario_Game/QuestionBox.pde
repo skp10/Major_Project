@@ -4,11 +4,12 @@ class QuestionBox extends Box {
   PImage[] boxImage;
 
   int imageState;
-  PVector originalLocation;
 
-  QuestionBox(PVector grav) {
+  QuestionBox(float x, float y) {
     super();
-
+    originalLocation = new PVector(x, y);
+    location = new PVector(x, y);
+    
     vel = new PVector(0, 3);
     ac = new PVector(0, 0);
     mass = 0.1;
@@ -31,13 +32,13 @@ class QuestionBox extends Box {
     }
   }
 
-  void collision(Mario theMario) {
+  void collision(Mario theMario, ArrayList<Koopa> koopas) {
     if (location.y >= originalLocation.y) {
       vel.y = 0;
       ac.y = 0;
       location.y = originalLocation.y;
     }
-    println(location.y);
     super.marioAllWayCollision(theMario);
+    super.koopaAllWayCollision(koopas);
   }
 }

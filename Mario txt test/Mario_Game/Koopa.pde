@@ -1,7 +1,7 @@
 class Koopa extends Characters {
 
   PVector dimension;
-
+  
   int imgLength;
   PImage enemyWalkRight[];
   PImage enemyWalkLeft[];
@@ -12,7 +12,8 @@ class Koopa extends Characters {
 
   boolean hitOnce;
   boolean movingRight;
-
+  
+  boolean displayKoopa;
   boolean deathEnabled;
 
   int walkingLeftState;
@@ -20,6 +21,7 @@ class Koopa extends Characters {
 
   Koopa(PVector location, PVector vel, PVector ac, float mass) {
     super(location, vel, ac, mass);
+    isKoopa = true;
 
     dimension = new PVector(36, 61);
 
@@ -65,7 +67,7 @@ class Koopa extends Characters {
     imageMode(CENTER);
     if (walkingRightState == 0) {
       image(enemyWalkRight[0], location.x, location.y);
-    } else if (walkingLeftState == 1) {
+    } else if (walkingRightState == 1) {
       image(enemyWalkRight[1], location.x, location.y);
     }
     if (frameCount % 30 == 0) {
@@ -135,7 +137,11 @@ class Koopa extends Characters {
 
     float distX = dist (charLocation.x, charLocation.y, location.x, charLocation.y);
     float distY = dist (charLocation.x, charLocation.y, charLocation.x, location.y);
-
+    
+    if (distX <= width/2+160) {
+      displayKoopa = true;  
+    }
+      
     if (charLocation.x < enemyLocation.x && distX >= 0) {
       distX *= -1;
     }
@@ -150,7 +156,7 @@ class Koopa extends Characters {
       if (overlapX >= overlapY) {
         if (distY < 0) {
           theMario.location.y = location.y-dimension.y/2-theMario.dimension.y/2;
-          theMario.vel.y *= -1;          
+          theMario.vel.y = -11;          
           deathEnabled = true;
           hitCounter++;
         } else if (distY > 0) {

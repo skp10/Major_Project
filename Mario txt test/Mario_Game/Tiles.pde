@@ -1,9 +1,10 @@
 class Tile {
 
-  ArrayList<Grass> grasses = new ArrayList<Grass>();
-  ArrayList<Muncher> munchers = new ArrayList<Muncher>();
-  ArrayList<Coin> coins = new ArrayList<Coin>();
-  ArrayList<QuestionBox> qBoxes = new ArrayList<QuestionBox>();
+  ArrayList<Grass> grasses;
+  ArrayList<Muncher> munchers;
+  ArrayList<Coin> coins;
+  ArrayList<QuestionBox> qBoxes;
+  ArrayList<SpinnerBox> spinBoxes;
 
   float x, y;
   float w, h;
@@ -14,75 +15,88 @@ class Tile {
   int imageState;
 
 
-  Tile(float x, float y, float w, float h, char type, PVector grav) {
+  Tile(float x, float y, float w, float h, char type) {
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
     this.type = type;
+    
+    grasses = new ArrayList<Grass>();
+    munchers = new ArrayList<Muncher>();
+    coins = new ArrayList<Coin>();
+    qBoxes = new ArrayList<QuestionBox>();
+    spinBoxes = new ArrayList<SpinnerBox>();
 
-    addsGrass();
-    addsMuncher();
-    addsCoin();
-    addsQuestionBox(grav);
+    addGrass();
+    addMuncher();
+    addCoin();
+    addQuestionBox();
+    addSpinnerBox();
 
     if (type == '.') {
       tileImg = null;
     }
   }
 
-  void display() {   
+  void display(PVector grav, Mario theMario, ArrayList<Koopa> koopas) {   
     imageMode(CORNER);
-    if (type!= '.' && type != 'v' && type != 'c' && type != '?') {     
+    if (type!= '.' && type != 'v' && type != 'c' && type != '?' && type != '0' && type != 'k') {     
       image(tileImg, x, y, w, h);
-    } else if (type == 'v') {
-      for (Muncher munch : munchers) {
-        munch.location = new PVector(x, y);
-        munch.dimension = new PVector(w, h);
-        munch.display();
+      grassCollision(theMario, koopas);
+    }
+    else if (type == 'v') {
+      for (Muncher theMuncher : munchers) {
+        theMuncher.location = new PVector(x, y);
+        theMuncher.dimension = new PVector(w, h);
+        theMuncher.display();
+        theMuncher.marioCollision(theMario);
       }
-    } else if (type == 'c') {
+    }
+    else if (type == 'c') {
       for (Coin theCoin : coins) {
         theCoin.location = new PVector(x, y);
         theCoin.dimension = new PVector(w, h);
         theCoin.display();  
       }
-    }else if (type == '?') {
+    }
+    else if (type == '?') {
       for (QuestionBox theBox : qBoxes) {
         theBox.display();    
-        theBox.addforce(gravity);
+        theBox.addforce(grav);
         theBox.move();
+        theBox.collision(theMario, koopas);
+      }
+    }else if (type == '0') {
+      for (SpinnerBox theBox : spinBoxes) {
+        theBox.display();
+        theBox.addforce(grav);
+        theBox.move();
+        theBox.checkMillis();
+        theBox.collision(theMario, koopas);
       }
     }
   }
 
-  void checkCollision(Mario theMario, ArrayList<Koopa> enemy) {
-    grassCollision(theMario, enemy);
-    muncherCollision(theMario);
+  void checkCollision(Mario theMario) {    
     coinCollision(theMario);
-    questionBoxCollision(theMario);
   }
 
-  void grassCollision(Mario themario, ArrayList<Koopa> enemy) {
+  void grassCollision(Mario themario, ArrayList<Koopa> koopas) {
     for (Grass grass : grasses) {
       grass.location.x = x;
       grass.location.y = y;
 
       if (type == '#' || type == '`' || type == '^') {
         grass.marioTopGrassCollision(themario);
-        grass.koopaTopGrassCollision(enemy);
+        grass.koopaTopGrassCollision(koopas);
       } else if (type == '/' || type == '*' || type == '{' || type == '}') {
         grass.marioAllWayCollision(themario);
-        grass.koopaAllWayCollision(enemy);
+        grass.koopaAllWayCollision(koopas);
       }
     }
   }
-
-  void muncherCollision(Mario theMario) {
-    for (Muncher theMuncher : munchers) {
-      theMuncher.marioCollision(theMario);  
-    }
-  }
+  
   void coinCollision(Mario theMario) {
     for (int i = coins.size()-1; i >= 0; i--) {
       Coin theCoin = coins.get(i);
@@ -93,36 +107,32 @@ class Tile {
       }
     }
   }
-  void questionBoxCollision(Mario theMario) {
-    for (QuestionBox theBox : qBoxes) {
-      theBox.collision(theMario);
-    }
-  }
-
-  void addsMuncher() {
+  
+  void addMuncher() {
     if (type == 'v') {
       munchers.add(new Muncher());
     }
   }
 
-  void addsCoin() {
+  void addCoin() {
     if (type == 'c') {
       coins.add(new Coin());  
     }
   }
   
-  void addsQuestionBox(PVector grav) {
+  void addQuestionBox() {
     if (type == '?') {
-      qBoxes.add(new QuestionBox(grav));
-      
-      for (QuestionBox box : qBoxes) {
-        box.location = new PVector(x, y);
-        box.originalLocation = new PVector(x, y);
-      }
+      qBoxes.add(new QuestionBox(x, y));
     }
   }
   
-  void addsGrass() {
+  void addSpinnerBox() {
+    if (type == '0') {
+      spinBoxes.add(new SpinnerBox(x, y));  
+    }
+  }
+  
+  void addGrass() {
     if (type == '#') {
       grasses.add(new Grass());
       tileImg = loadImage("Grass/GrassTop.png");
