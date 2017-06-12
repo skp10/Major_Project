@@ -3,14 +3,14 @@ class Characters {
   PVector vel;
   PVector ac;
   
-  boolean isKoopa;
+  boolean isEnemy;
   
   float mass;
 
-  Characters(PVector location, PVector vel, PVector ac, float mass) {
+  Characters(PVector location, PVector vel, float mass) {
     this.location = new PVector(location.x, location.y);
     this.vel = new PVector(vel.x, vel.y);
-    this.ac = new PVector(ac.x, ac.y);
+    this.ac = new PVector(0, 0);
     
     this.mass = mass;
   }
@@ -18,7 +18,7 @@ class Characters {
   void move() {
     vel.add(ac);
     location.y += vel.y;
-    if (isKoopa) {
+    if (isEnemy) {
       location.x -= vel.x;
     }
     ac.mult(0);

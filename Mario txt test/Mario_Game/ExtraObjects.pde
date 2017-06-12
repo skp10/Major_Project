@@ -1,18 +1,18 @@
 class ExtraObjects {
   
   ArrayList<Koopa> koopas;
+  ArrayList<SoldierEnemy> soldiers;
   PVector grav;  
   
   ExtraObjects(PVector grav) {
     this.grav = grav;
     
     koopas = new ArrayList<Koopa>();   
+    soldiers = new ArrayList<SoldierEnemy>();
   }
   
   void display(Mario theMario) {
-    for (int i=0; i<koopas.size(); i++) {
-      Koopa theKoopa = koopas.get(i);
-      
+    for (Koopa theKoopa : koopas) {      
       if (theKoopa.displayKoopa) {
         theKoopa.display(theMario);     
         theKoopa.move();
@@ -34,5 +34,18 @@ class ExtraObjects {
     //    }
     //  }
     //}
+    soldierEnemyInteraction(theMario);
+  }
+  
+  void soldierEnemyInteraction(Mario theMario) {
+    for (SoldierEnemy theSoldier : soldiers) {
+      if (theSoldier.displaySoldier) {
+        theSoldier.display(theMario);
+        theSoldier.move();
+        theSoldier.addforce(grav);
+      }
+      
+      theSoldier.marioAndSoldierCollisoin(theMario);
+    }
   }
 }

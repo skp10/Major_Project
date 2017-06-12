@@ -39,11 +39,11 @@ class Tile {
     }
   }
 
-  void display(PVector grav, Mario theMario, ArrayList<Koopa> koopas) {   
+  void display(PVector grav, Mario theMario, ArrayList<Koopa> koopas, ArrayList<SoldierEnemy> soldiers) {   
     imageMode(CORNER);
-    if (type!= '.' && type != 'v' && type != 'c' && type != '?' && type != '0' && type != 'k') {     
+    if (type!= '.' && type != 'v' && type != 'c' && type != '?' && type != '0' && type != 'k' && type != 's') {     
       image(tileImg, x, y, w, h);
-      grassCollision(theMario, koopas);
+      grassCollision(theMario, koopas, soldiers);
     }
     else if (type == 'v') {
       for (Muncher theMuncher : munchers) {
@@ -82,7 +82,7 @@ class Tile {
     coinCollision(theMario);
   }
 
-  void grassCollision(Mario themario, ArrayList<Koopa> koopas) {
+  void grassCollision(Mario themario, ArrayList<Koopa> koopas, ArrayList<SoldierEnemy> soldiers) {
     for (Grass grass : grasses) {
       grass.location.x = x;
       grass.location.y = y;
@@ -90,9 +90,11 @@ class Tile {
       if (type == '#' || type == '`' || type == '^') {
         grass.marioTopGrassCollision(themario);
         grass.koopaTopGrassCollision(koopas);
+        grass.soldierTopGrassCollision(soldiers);
       } else if (type == '/' || type == '*' || type == '{' || type == '}') {
         grass.marioAllWayCollision(themario);
         grass.koopaAllWayCollision(koopas);
+        grass.soldierAllWayCollision(soldiers);
       }
     }
   }

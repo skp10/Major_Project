@@ -37,8 +37,8 @@ class Mario extends Characters {
   boolean marioDies;
 
   //DEFAULT CONSTRUCTOR...
-  Mario(PVector location, PVector vel, PVector ac, float mass) {
-    super(location, vel, ac, mass);      //super(location, vel, ac, mass...
+  Mario(PVector location, PVector vel, float mass) {
+    super(location, vel, mass);      //super(location, vel, ac, mass...
 
     //location = new PVector(100, height/2);
     //vel = new PVector(3, 0);
