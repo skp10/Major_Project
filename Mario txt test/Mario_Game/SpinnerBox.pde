@@ -11,7 +11,6 @@ class SpinnerBox extends Box {
     location = new PVector(x, y);
 
     vel = new PVector(0, 3);
-    ac = new PVector(0, 0);
     mass = 0.1;
     
     spinnerBoxCheck = true;

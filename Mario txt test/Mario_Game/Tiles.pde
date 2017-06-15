@@ -1,6 +1,7 @@
 class Tile {
 
   ArrayList<Grass> grasses;
+  ArrayList<Box> emptyBoxes;
   ArrayList<Muncher> munchers;
   ArrayList<Coin> coins;
   ArrayList<QuestionBox> qBoxes;
@@ -23,6 +24,7 @@ class Tile {
     this.type = type;
     
     grasses = new ArrayList<Grass>();
+    emptyBoxes = new ArrayList<Box>();
     munchers = new ArrayList<Muncher>();
     coins = new ArrayList<Coin>();
     qBoxes = new ArrayList<QuestionBox>();
@@ -33,6 +35,11 @@ class Tile {
     addCoin();
     addQuestionBox();
     addSpinnerBox();
+    
+    if (type == 'o') {
+      emptyBoxes.add(new Box());
+      tileImg = loadImage("Items/emptyBox/emptyBox.png");  
+    }
 
     if (type == '.') {
       tileImg = null;
@@ -76,6 +83,11 @@ class Tile {
         theBox.collision(theMario, koopas);
       }
     }
+    for (Box theBox : emptyBoxes) {
+      theBox.location = new PVector(x, y);
+      theBox.isEmptyBox = true;
+      theBox.marioAllWayCollision(theMario);
+    }
   }
 
   void checkCollision(Mario theMario) {    
@@ -88,8 +100,8 @@ class Tile {
       grass.location.y = y;
 
       if (type == '#' || type == '`' || type == '^') {
-        grass.marioTopGrassCollision(themario);
-        grass.koopaTopGrassCollision(koopas);
+        grass.marioTopCollision(themario);
+        grass.koopaTopCollision(koopas);
         grass.soldierTopGrassCollision(soldiers);
       } else if (type == '/' || type == '*' || type == '{' || type == '}') {
         grass.marioAllWayCollision(themario);

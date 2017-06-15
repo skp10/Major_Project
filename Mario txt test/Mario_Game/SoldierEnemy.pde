@@ -33,7 +33,7 @@ class SoldierEnemy extends Characters {
       LeftWalkImg[i] = loadImage("Enemies/Soldier/soldierLeft"+i+".png");
     }
     shellImg = new PImage[3];
-    for (int i=0; i<shellImg.length; i++) {
+    for (int i=0; i < shellImg.length; i++) {
       shellImg[i] = loadImage("Enemies/Soldier/shell"+i+".png");
     }
   }

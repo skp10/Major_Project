@@ -1,4 +1,4 @@
-class Box {
+class Box extends Grass{
 
   PVector location;
   PVector originalLocation;
@@ -17,12 +17,20 @@ class Box {
   
   boolean stateChangerEnabled;
   int timePassed;
+  
+  boolean botCollision;
+  int numOfHits;
+  
+  boolean isEmptyBox;
 
   Box() {
     location = new PVector(0, 0);
     dimension = new PVector(33, 33);
+    ac = new PVector(0, 0);
     
     marioJumpVelocity = -16;
+    
+    numOfHits = int(random(1, 5));
   }
 
   void move() {
@@ -38,6 +46,9 @@ class Box {
   }
   
   void marioAllWayCollision(Mario theMario) {
+    super.location.x = location.x;
+    super.location.y = location.y;
+    super.marioTopCollision(theMario);
     PVector charLocation = new PVector(theMario.location.x, theMario.location.y);
     PVector objLocation = new PVector(location.x+dimension.x/2, location.y+dimension.y/2);
 
@@ -68,20 +79,23 @@ class Box {
           theMario.vel.y = 0;
           theMario.ac.y = 0;
           theMario.location.y = location.y+dimension.y+theMario.dimension.y/2;
-          vel.y = -5;
+          if ((numOfHits > 0 || !questionBoxCheck) && !isEmptyBox) {
+            vel.y = -5;
+          }
+          botCollision = true;
+          numOfHits --;
           
           if (spinnerBoxCheck) {
             collisionEnabled = false;
             stateChangerEnabled = true;
             timePassed = millis();
-          }
-     
+          } 
         }
       } else {
         if (distX < 0) {
-          theMario.vel.x = 0;
+          theMario.location.x = location.x-theMario.dimension.x/2;
         } else if (distX > 0) {
-          theMario.vel.x = 0;
+          theMario.location.x = location.x+dimension.x+theMario.dimension.x/2;
         }
       }
     }

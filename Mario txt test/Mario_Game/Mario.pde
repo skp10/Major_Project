@@ -2,8 +2,10 @@ class Mario extends Characters {
 
   int leftMovementState;
   int rightMovementState;
+  
+  boolean deathAnimationOnce;
 
-  PImage marioDie;
+  PImage marioDead;
 
   ////PHYSICS...
   //PVector location;
@@ -56,7 +58,7 @@ class Mario extends Characters {
     rightJump = loadImage("Mario/Right_MarioJump.png");
     leftJump = loadImage("Mario/Left_MarioJump.png");
 
-    marioDie = loadImage("Mario/marioDie.png");
+    marioDead = loadImage("Mario/marioDie.png");
   }
 
   void display() {
@@ -79,7 +81,11 @@ class Mario extends Characters {
         }
       }
     } else {
-      image(marioDie, location.x, location.y);
+      image(marioDead, location.x, location.y);
+      if (!deathAnimationOnce) {
+        deathAnimationOnce = true;
+        vel.y = -17;
+      }
     }
   }
 
@@ -96,6 +102,9 @@ class Mario extends Characters {
       location.x = levelEndPixLoc-dimension.x/2;
     }
     super.move();
+    if (location.y+dimension.y/2 > height) {
+      marioDies = true;
+    }
   }
 
   boolean jump() {
@@ -153,13 +162,13 @@ class Mario extends Characters {
   void leftRightMovement() {
     if (appearLeftOrRightSprite) {
       if (movingRight) {        
-        location.x += vel.x;
         vel.x = 3;
+        location.x += vel.x;
       }
     } else {
       if (movingLeft) {
-        location.x -= vel.x;
         vel.x = 3;
+        location.x -= vel.x;
       }
     }
   }

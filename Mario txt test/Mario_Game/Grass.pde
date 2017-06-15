@@ -12,9 +12,10 @@ class Grass {
     marioJumpVelocity = -16;
   }
 
-  void marioTopGrassCollision(Mario theMario) {    
+  void marioTopCollision(Mario theMario) {    
     PVector charPoint1 = new PVector(theMario.location.x-theMario.dimension.x/2, theMario.location.y+theMario.dimension.y/2);
     PVector charPoint2 = new PVector(theMario.location.x+theMario.dimension.x/2, theMario.location.y+theMario.dimension.y/2);
+    
 
     PVector objPoint1 = new PVector(location.x, location.y);
     PVector objPoint2 = new PVector(location.x+dimension.x, location.y);
@@ -33,16 +34,16 @@ class Grass {
   }
 
   void marioAllWayCollision(Mario theMario) {
-    PVector charLocation = new PVector(theMario.location.x, theMario.location.y);
+    PVector marioLocation = new PVector(theMario.location.x, theMario.location.y);
     PVector objLocation = new PVector(location.x+dimension.x/2, location.y+dimension.y/2);
 
-    float distX = dist (charLocation.x, charLocation.y, objLocation.x, charLocation.y);
-    float distY = dist (charLocation.x, charLocation.y, charLocation.x, objLocation.y);
+    float distX = dist (marioLocation.x, marioLocation.y, objLocation.x, marioLocation.y);
+    float distY = dist (marioLocation.x, marioLocation.y, marioLocation.x, objLocation.y);
 
-    if (charLocation.x < objLocation.x && distX > 0) {
+    if (marioLocation.x < objLocation.x && distX > 0) {
       distX *= -1;
     }
-    if (charLocation.y < objLocation.y && distY > 0) {
+    if (marioLocation.y < objLocation.y && distY > 0) {
       distY *= -1;
     }
 
@@ -74,7 +75,7 @@ class Grass {
     }
   }
 
-  void koopaTopGrassCollision(ArrayList<Koopa> theKoop) {
+  void koopaTopCollision(ArrayList<Koopa> theKoop) {
     for (int i=theKoop.size()-1; i >= 0; i--) {
       Koopa koop = theKoop.get(i);
 
