@@ -1,7 +1,0 @@
-PEER ASSESS:
-
-	- Johann:	- Do something when two enemies create collision
-				- Do something when the player hits the QUESTION BOX (Like: Animate coin coming out of the box)
-
-
-	- My sister (Kritika) - Add Instruction in the Mario Game
